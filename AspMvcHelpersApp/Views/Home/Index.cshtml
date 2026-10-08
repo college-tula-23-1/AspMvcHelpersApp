@@ -1,0 +1,17 @@
+﻿@using AspMvcHelpersApp.Helpers
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    var cityTitle = (string)ViewData["CityListTitle"]!;
+    var cityList = (string[])ViewData["CityList"]!;
+
+    var langsTitle = (string)ViewData["LangsListTitle"]!;
+    var langsList = (string[])ViewData["LangsList"]!;
+}
+
+@Html.CreateUL(cityList, cityTitle)
+<hr />
+@Html.CreateUL(langsList, langsTitle)
+<hr />
+@Html.CreateOL(langsList, langsTitle)

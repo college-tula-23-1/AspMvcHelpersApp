@@ -1,0 +1,73 @@
+﻿@using AspMvcHelpersApp.Models
+@{
+}
+
+@model Employee
+
+@* <form method="post" action="/Home/Create">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" />
+    </div>
+    <div>
+        <label>Age</label>
+        <input type="number" name="age" />
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form> *@
+
+@* 
+    @using(Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <div>
+        @Html.Label("Name", "Employee Name")
+        @Html.TextBox("Name")
+    </div>
+    <div>
+        @Html.Label("Age", "Employee Age")
+        @Html.TextBox("Age", "", new {type = "number"})
+    </div>
+    <div>
+        @Html.Label("Age", "Employee Age")
+        @Html.CheckBox("Married", false)
+    </div>
+
+    <div>
+        @Html.Label("Color", "Red")
+        @Html.RadioButton("Color", "Red")
+        <br />
+        @Html.Label("Color", "Blue")
+        @Html.RadioButton("Color", "Blue")
+        <br />
+        @Html.Label("Color", "Green")
+        @Html.RadioButton("Color", "Green")
+    </div>
+    <div>
+        @Html.Label("City", "City")
+        @Html.DropDownList("City", new SelectList(
+            new string[]{"Moscow", "Tula", "Kazan" }));
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+}
+
+@Html.ActionLink("About Company", "About", "Admin")
+
+@Html.RouteLink("About Company", new{ controller="Admin", action="About" }, new{ @class="div-red" })
+ *@
+
+<form asp-action="Create" 
+        asp-controller="Home" 
+        asp-area=""
+        asp-antiforgery="true"
+        method="post">
+    <label asp-for="Name">Name</label>
+    <input asp-for="Name" />
+    <label asp-for="Age">Age</label>
+    <input asp-for="Age" />
+    <label asp-for="CompanyId">Company</label>
+    <select asp-for="CompanyId" asp-items="@ViewBag.Companies" />
+</form>
